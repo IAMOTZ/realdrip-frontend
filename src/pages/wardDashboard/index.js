@@ -2,8 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Infusion from './Infusion';
-import firebase from 'firebase/app';
-import firebaseDb from 'firebase';
+import firebaseApp from 'firebase/app';
+import firebase from 'firebase';
 import fbConfig from '../../fbConfig';
 
 export class WardDashBoard extends React.Component {
@@ -16,9 +16,9 @@ export class WardDashBoard extends React.Component {
   }
 
   componentDidMount(){
-    firebase.initializeApp(fbConfig);
+    firebaseApp.initializeApp(fbConfig);
     const self = this;
-    firebaseDb.database().ref('/devices').once('value').then(function(snapshot) {
+    firebase.database().ref('/devices').on('value', function(snapshot) {
       const data = snapshot.val();
       const formattedData = [];
       for(let key in data) {
@@ -38,7 +38,7 @@ export class WardDashBoard extends React.Component {
     });
     return (
       activeInfusions.map(infusion => (
-          <Infusion id={infusion.id} flowrate={infusion.flowrate} timeRemaining={infusion.timeRemaining} volumeGivenPercent={infusion.volumeGivenPercent} />
+          <Infusion  key={infusion.id} flowrate={infusion.flowrate} timeRemaining={infusion.timeRemaining} volumeGivenPercent={infusion.volumeGivenPercent} />
         ))
     )
   }

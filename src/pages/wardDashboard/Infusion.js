@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Infusion = ({ flowrate, timeRemaining, volumeGivenPercent, id }) => {
+const Infusion = ({ flowrate, timeRemaining, volumeGivenPercent }) => {
   return (
-    <ul className="list_heading_ul ul_contnt active_dsh_list" key={id}>
+    <ul className="list_heading_ul ul_contnt active_dsh_list">
       <li>
         <div className="bld_prcnt">{volumeGivenPercent}</div>
         <div className="wrapper_progress_bar"><div className="inner_progress_bar"></div></div>
