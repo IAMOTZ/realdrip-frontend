@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 
 
 export class OperationDetail extends React.Component {
@@ -17,6 +17,13 @@ export class OperationDetail extends React.Component {
 
 
   render() {
+    const { location } = this.props;
+
+    if(!location.state || !location.state.infusionId) {
+      return <Redirect to="/ward-dashboard"/>
+    }
+
+    const { infusion } = location.state;
     return (
         <div className="main_wrapper ">
            <div className="inner_dshbrd_wrap">
@@ -111,7 +118,7 @@ export class OperationDetail extends React.Component {
                     <div className="infusn_wrap device_infusn oprtn_dtl_wrd">
                           <div className="wrpd_icon_num">
                             <span className="urgnt_txt">
-                                <h3 className="prcnt_opt_detail">89%</h3>
+                                <h3 className="prcnt_opt_detail">{infusion.volumeGivenPercent}</h3>
                                 <h5 className="prcnt_op_txt">Dispense 462cl</h5>
                                 <div className="wrapper_progress_bar"><div className="inner_progress_bar"></div></div>
                             </span>
@@ -121,7 +128,10 @@ export class OperationDetail extends React.Component {
                      <div className="infusn_wrap device_infusn  oprtn_dtl_wrd">
                           <div className="wrpd_icon_num">
                             <span className="urgnt_txt">
-                                <div className="wrapper_blood_flow"><h3 className="prcnt_opt_detail">36</h3> <span className="bloodflow">ml/h</span> <span className="deg"></span></div>
+                                <div className="wrapper_blood_flow">
+                                  <h3 className="prcnt_opt_detail">{infusion.flowrate && infusion.flowrate.replace('ml/hr', '')}</h3>&nbsp;
+                                  <span className="bloodflow">ml/h</span> <span className="deg"></span>
+                                </div>
                                 <h5 className="prcnt_op_txt">Current flowrate</h5>
                             </span>
                             <span className="drip_img_wrap"><img src={require('../../assets/Images/drip.png')} /></span>

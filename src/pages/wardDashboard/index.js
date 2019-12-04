@@ -11,7 +11,8 @@ export class WardDashBoard extends React.Component {
     super();
     this.state = {
       showMenu: false,
-      infusions: [],
+      rawInfusionData: null,
+      formattedInfusionData: [],
     };
   }
 
@@ -20,34 +21,47 @@ export class WardDashBoard extends React.Component {
     const self = this;
     firebase.database().ref('/devices').on('value', function(snapshot) {
       const data = snapshot.val();
+      self.setState({ rawInfusionData: data });
       const formattedData = [];
       for(let key in data) {
         const device = data[key];
         device.id = key;
         formattedData.push(device)
       }
-      self.setState({
-        infusions: formattedData,
-      })
+      self.setState({ formattedInfusionData: formattedData });
     });
   }
 
+  handleRedirectClick = (infusionId) => {
+    const location = {
+      pathname: `/operation-detail/${infusionId}`,
+      state: {
+        infusionId,
+        infusion: this.state.rawInfusionData[infusionId]
+      }
+    }
+    this.props.history.push(location)
+  }
+
   renderActiveInfusions() {
-    const activeInfusions = this.state.infusions.filter(infusion => {
+    const activeInfusions = this.state.formattedInfusionData.filter(infusion => {
       return infusion.onOperatin === "true";
     });
     return (
       activeInfusions.map(infusion => (
-          <Infusion  key={infusion.id} flowrate={infusion.flowrate} timeRemaining={infusion.timeRemaining} volumeGivenPercent={infusion.volumeGivenPercent} />
+        <Infusion 
+          onClick={() => this.handleRedirectClick(infusion.id)} 
+          key={infusion.id} 
+          flowrate={infusion.flowrate} 
+          timeRemaining={infusion.timeRemaining} 
+          volumeGivenPercent={infusion.volumeGivenPercent} 
+          />
         ))
     )
   }
 
   handleClick = () => {
     this.setState({ showMenu: !this.state.showMenu })
-  }
-  handleRedirectClick = () => {
-    this.props.history.push('/operation-detail')
   }
 
   render() {
