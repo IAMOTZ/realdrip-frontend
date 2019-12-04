@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import ProgressBar from '../../components/common/ProgressBar';
 
 const Infusion = ({ flowrate, timeRemaining, volumeGivenPercent, onClick }) => {
   return (
     <ul className="list_heading_ul ul_contnt active_dsh_list" onClick={onClick}>
       <li>
         <div className="bld_prcnt">{volumeGivenPercent}</div>
-        <div className="wrapper_progress_bar"><div className="inner_progress_bar"></div></div>
+        <ProgressBar percentageComplete={volumeGivenPercent}/>
         <div className="bld_txt">Blood</div>
       </li>
       <li>

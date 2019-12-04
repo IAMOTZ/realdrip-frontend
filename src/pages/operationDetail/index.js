@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link, Redirect } from 'react-router-dom'
+import ProgressBar from '../../components/common/ProgressBar';
 
 
 export class OperationDetail extends React.Component {
@@ -120,7 +121,7 @@ export class OperationDetail extends React.Component {
                             <span className="urgnt_txt">
                                 <h3 className="prcnt_opt_detail">{infusion.volumeGivenPercent}</h3>
                                 <h5 className="prcnt_op_txt">Dispense 462cl</h5>
-                                <div className="wrapper_progress_bar"><div className="inner_progress_bar"></div></div>
+                                <ProgressBar percentageComplete={infusion.volumeGivenPercent}/>
                             </span>
                             <span className="drip_img_wrap"><img src={require('../../assets/Images/drip.png')} /></span>
                           </div>
