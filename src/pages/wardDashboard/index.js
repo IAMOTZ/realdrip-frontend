@@ -8,8 +8,6 @@ export class WardDashBoard extends React.Component {
     super();
     this.state = {
       showMenu: false,
-      rawInfusionData: null,
-      formattedInfusionData: [],
     };
   }
 
@@ -53,6 +51,8 @@ export class WardDashBoard extends React.Component {
   }
 
   render() {
+    const activeInfusions = this.renderActiveInfusions();
+
     return (
       <div className="main_wrapper ">
         <div className="inner_dshbrd_wrap">
@@ -116,14 +116,14 @@ export class WardDashBoard extends React.Component {
                       <div className="infusn_nrse_wrap">
                         <div className="infusn_wrap">
                           <div className="wrpd_icon_num">
-                            <span className="urgnt_txt">6</span>
+                            <span className="urgnt_txt">{activeInfusions.length}</span>
                             <span className="drip_img_wrap"><img src={require('../../assets/Images/drip.png')} /></span>
                           </div>
                           <h5>Active Infusion</h5>
                         </div>
                         <div className="infusn_wrap active_nurse">
                           <div className="wrpd_icon_num">
-                            <span className="urgnt_txt">6</span>
+                            <span className="urgnt_txt">{activeInfusions.length}</span>
                             <span className="drip_img_wrap"><img src={require('../../assets/Images/drip.png')} /></span>
                           </div>
                           <h5>Active Infusion</h5>
@@ -134,7 +134,7 @@ export class WardDashBoard extends React.Component {
 
                     <div className="device_in_use_wrapper">
                       <div className="device_inuse">
-                        <span class="urgnt_txt">02</span>
+                        <span class="urgnt_txt">{activeInfusions.length}</span>
                         <span className="drip_img_wrap"><img class="device_inuse_img" src={require('../../assets/Images/drip.png')} /></span>
                       </div>
                       <div className="device_inuse">
@@ -174,7 +174,7 @@ export class WardDashBoard extends React.Component {
                         <li>Nurse</li>
                         <li>Patient Case</li>
                       </ul>
-                      {this.renderActiveInfusions()}
+                      {activeInfusions}
                     </div>
                   </div>
                 </div>
