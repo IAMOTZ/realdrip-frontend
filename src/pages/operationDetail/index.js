@@ -120,7 +120,7 @@ export class OperationDetail extends React.Component {
                           <div className="wrpd_icon_num">
                             <span className="urgnt_txt">
                                 <h3 className="prcnt_opt_detail">{infusion.volumeGivenPercent}</h3>
-                                <h5 className="prcnt_op_txt">Dispense 462cl</h5>
+                                <h5 className="prcnt_op_txt">Dispensed {infusion.volumeGiven}</h5>
                                 <ProgressBar percentageComplete={infusion.volumeGivenPercent}/>
                             </span>
                             <span className="drip_img_wrap"><img src={require('../../assets/Images/drip.png')} /></span>
