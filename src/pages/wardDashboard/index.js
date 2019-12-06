@@ -17,7 +17,7 @@ export class WardDashBoard extends React.Component {
       pathname: `/operation-detail/${infusionId}`,
       state: {
         infusionId,
-        infusion: infusionData[infusionId]
+        infusion: infusionData[infusionId].data
       }
     }
     this.props.history.push(location)
@@ -30,7 +30,8 @@ export class WardDashBoard extends React.Component {
     const activeInfusions = [];
 
     Object.keys(infusionData).forEach(infusionId => {
-      const infusion = infusionData[infusionId];
+      const infusion = infusionData[infusionId].data;
+      if(!infusion) return;
       if(infusion.onOperatin === "true") {
         activeInfusions.push(
           <Infusion 
