@@ -8,7 +8,7 @@ const Infusion = ({ flowrate, timeRemaining, volumeGivenPercent, onClick }) => {
       <li>
         <div className="bld_prcnt">{volumeGivenPercent}</div>
         <ProgressBar percentageComplete={volumeGivenPercent}/>
-        <div className="bld_txt">Blood</div>
+        <div className="bld_txt">Saline Water</div>
       </li>
       <li>
         <div className="time_in_second bld_txt">{timeRemaining}</div>
