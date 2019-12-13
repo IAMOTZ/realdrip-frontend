@@ -94,26 +94,10 @@ export class WardNurse extends React.Component {
 
                       <div className="infusn_wrap device_infusn green_device nurse_active_wrd">
                         <div className="wrpd_icon_num">
-                          <span className="urgnt_txt">6</span>
+                          <span className="urgnt_txt">{this.state.nurses.length}</span>
                           <span className="drip_img_wrap"><img src={require('../../assets/Images/drip.png')} /></span>
                         </div>
-                        <h5>Active Infusion</h5>
-                      </div>
-
-                      <div className="infusn_device_wrap">
-                        <div className="infusn_wrap">
-                          <div className="wrpd_icon_num">
-                            <span className="urgnt_txt">45</span>
-
-                          </div>
-                          <h5>Active Infusion</h5>
-                        </div>
-                        <div className="infusn_wrap">
-                          <div className="wrpd_icon_num">
-                            <span className="urgnt_txt">43</span>
-                          </div>
-                          <h5>Active Infusion</h5>
-                        </div>
+                        <h5>Active Nurses</h5>
                       </div>
 
                     </div>
@@ -179,7 +163,7 @@ const Nurse = ({ name, email, phoneNo, wardName, status }) => (
     </li>
 
     <li>
-      <div className="time_only">Inactive</div>
+      <div className="time_only">Active</div>
     </li>
   </ul>
 )
