@@ -122,7 +122,7 @@ export class WardNurse extends React.Component {
                 <div className="right-mid-dash">
                   <div className="right-wrap-heading devics_lst_clmn">
                     <div className="add_new_device_wrap">
-                      <div className="add_device_btn">Add new device </div>
+                      <div className="add_device_btn"><Link to="/addNurse">Add nurse</Link></div>
                     </div>
                     <div className="operation_search_tab_bar">
                       <div className="oprtn_search_wrap operation_pdng">
