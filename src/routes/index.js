@@ -19,6 +19,7 @@ import ManagementWard from '../pages/managementWard'
 import ManagementDevices from '../pages/managementDevices'
 import ManagementNurses from '../pages/managementNurses'
 import ManagementSetting from '../pages/managementSetting'
+import AddNurse from '../pages/addNurse';
 import firebaseApp from 'firebase/app';
 import firebase from 'firebase';
 import fbConfig from '../fbConfig';
@@ -39,6 +40,7 @@ export default (props) => {
 	return (
 		<Router>
 			<Switch>
+				<Route exact path="/addNurse" component={AddNurse} />
 				<Route exact path="/" component={props => <Home {...props} />} />
 				<Route exact path="/ward-signin" component={props => <WardSignIn {...props}/>} />
 				<Route exact path="/ward-activation" component={props => <WardActivation {...props}/>} />
