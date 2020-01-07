@@ -52,7 +52,7 @@ export class WardNurse extends React.Component {
     axios.post(this.state.addNurseEndpoint, { ...this.state.input, phoneNo: this.state.input.wardName }, {
       headers: {
         // staging request token, shoudl last 3 days
-        'req-token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0eXBlIjoid2FyZF91c2VyIiwiaWQiOiI1ZGJhZDQyMTc0ZGYzOTAwMjIxYTU1ZjIiLCJpYXQiOjE1NzYyMzQ2MjAsImV4cCI6MTU3NjQ5MzgyMH0.iJGssGX1fZpRqmuYWOtUW14mt7kloz8if9xPV4-hD4M',
+        'req-token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0eXBlIjoid2FyZF91c2VyIiwiaWQiOiI1ZGJhZDQyMTc0ZGYzOTAwMjIxYTU1ZjIiLCJpYXQiOjE1NzgzOTAxMDAsImV4cCI6MTU3ODY0OTMwMH0.N7rwRG9kGTBFbb1a-Dp2z9c9xNcDyhZW0KVPGUmw3Z0',  
       }
     })
       .then((response) => {
